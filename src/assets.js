@@ -1,0 +1,63 @@
+// 圖片路徑相對於 index.html；座標使用 887 × 1774 的海報設計尺寸。
+export const assets = {
+  background: '',
+  sprites: [
+    {
+      src: './assets/character-01.webp',
+      x: 7,
+      y: 1376,
+      w: 181,
+      h: 179,
+    },
+    {
+      src: './assets/character-02.webp',
+      x: 168,
+      y: 1401,
+      w: 120,
+      h: 148,
+    },
+    {
+      src: './assets/character-03.webp',
+      x: 281,
+      y: 1411,
+      w: 116,
+      h: 141,
+    },
+    {
+      src: './assets/character-04.webp',
+      x: 375,
+      y: 1421,
+      w: 123,
+      h: 126,
+    },
+    {
+      src: './assets/character-05.webp',
+      x: 501,
+      y: 1421,
+      w: 121,
+      h: 136,
+    },
+    {
+      src: './assets/character-06.webp',
+      x: 606,
+      y: 1426,
+      w: 142,
+      h: 127,
+    },
+    {
+      src: './assets/character-07.webp',
+      x: 755,
+      y: 1434,
+      w: 118,
+      h: 125,
+    },
+  ],
+  car: './assets/car.webp',
+  pinkCar: './assets/pcar.webp',
+  title: './assets/title.webp',
+  cleanBackground: './assets/clean.webp',
+  carX: 438,
+  carY: 1264,
+  carWidth: 192,
+  carHeight: 104,
+};
