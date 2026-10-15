@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="和多P單J冒險團探索東京海報，尋找16個秘密，挑戰三款小遊戲。" />
+    <meta name="theme-color" content="#0b0b0b" />
+    <title>多P單J 東京・會動的海報</title>
+    <link
+      rel="preload"
+      href="./assets/fonts/DotGothic16-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/FusionPixel12-TW.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="w">
+      <canvas
+        id="c"
+        width="887"
+        height="1774"
+        tabindex="0"
+        aria-label="東京探索遊戲。點擊海報尋找秘密，方向鍵或 WASD 移動團員。"
+      >
+        此遊戲需要支援 Canvas 的瀏覽器。
+      </canvas>
+      <div id="hud">
+        <button type="button" id="bk1" aria-label="探索秘密收集進度">
+          ✨
+          <b id="h1">0</b>
+          /16
+        </button>
+        <button type="button" id="bk2" aria-label="查看團員">
+          👥
+          <b id="h2">0</b>
+          /7
+        </button>
+        <button type="button" id="bk3" aria-label="開啟冒險手帳">📖 手帳</button>
+        <button type="button" id="snd" aria-label="關閉聲音">
+          <span aria-hidden="true">♪</span>
+        </button>
+        <button type="button" id="skip" aria-label="預覽結局">⏩ 結局</button>
+      </div>
+      <div id="coach"></div>
+      <div id="toast" role="status" aria-live="polite"></div>
+      <div id="say">
+        <div class="n" id="sn"></div>
+        <div id="st" aria-live="polite"></div>
+      </div>
+      <div id="ov" role="dialog" aria-modal="true" aria-label="團員冒險檔案">
+        <div id="card">
+          <div class="hd">
+            PARTY
+            <b id="pn">0</b>
+            /7　⚔ 多P單J 冒險團
+          </div>
+          <div id="cscroll">
+            <div id="ch">
+              <div id="pw"><img id="pi" alt="" /></div>
+              <div id="ci">
+                <span id="cno"></span>
+                <h2 id="cn"></h2>
+                <div id="cr"></div>
+                <div id="cb"></div>
+              </div>
+            </div>
+            <div id="stats"></div>
+            <div class="row">
+              <b>必殺技</b>
+              <span id="sk"></span>
+            </div>
+            <div class="row">
+              <b>傳說道具</b>
+              <span id="it"></span>
+            </div>
+            <div id="bio"></div>
+          </div>
+          <div id="cfoot">
+            <div id="dots"></div>
+            <div class="rw">
+              <button type="button" class="bt g" id="pv" aria-label="上一位團員">◀</button>
+              <button type="button" class="bt" id="cx">OK！</button>
+              <button type="button" class="bt g" id="nt" aria-label="下一位團員">▶</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="mg" role="dialog" aria-modal="true" aria-label="小遊戲說明與結果">
+        <div id="mgb">
+          <img id="mgp" alt="" />
+          <h3 id="mgt"></h3>
+          <p id="mgd"></p>
+          <div id="mgr"></div>
+          <button type="button" class="bt" id="mgs">START ▶</button>
+        </div>
+      </div>
+      <button type="button" id="mgq">✕ 離開</button>
+      <div id="load" role="dialog" aria-modal="true" aria-label="遊戲載入">
+        <div id="ltc"><img id="lti" width="887" height="592" alt="多P單J 30+熟女團" /></div>
+        <div id="lrow"></div>
+        <div
+          id="lbar"
+          role="progressbar"
+          aria-label="圖片載入進度"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <i id="lfill"></i>
+        </div>
+        <div id="lpct" role="status">NOW LOADING… 0%</div>
+        <div id="ltip"></div>
+        <button type="button" class="bt" id="lgo" aria-hidden="true" style="visibility: hidden">
+          START ▶
+        </button>
+      </div>
+      <div id="bk" role="dialog" aria-modal="true" aria-label="冒險手帳">
+        <div id="bkc">
+          <div class="hd">📖 冒險手帳</div>
+          <div id="bkd"></div>
+          <div id="tabs">
+            <button type="button">秘密</button>
+            <button type="button">團員</button>
+            <button type="button">小遊戲</button>
+            <button type="button">探索</button>
+          </div>
+          <div id="bkb"></div>
+          <div id="book-footer">
+            <button type="button" class="bt g" id="reset">重新冒險</button>
+            <button type="button" class="bt" id="bkx">關閉</button>
+          </div>
+        </div>
+      </div>
+      <div id="endv" role="dialog" aria-modal="true" aria-label="冒險結局">
+        <div id="esun"></div>
+        <div id="ecw"><div id="ecr"></div></div>
+        <div id="ending-controls">
+          <button type="button" class="bt g" id="endpause" style="display: none">暫停字幕</button>
+          <button type="button" class="bt" id="endx" style="display: none">繼續逛逛 ▶</button>
+        </div>
+      </div>
+      <div id="fade"></div>
+    </div>
+    <noscript>請開啟 JavaScript 後遊玩東京探索遊戲。</noscript>
+    <script type="module" src="./src/game.js"></script>
+  </body>
+</html>
